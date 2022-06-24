@@ -1,0 +1,18 @@
+server:
+  port: 8082
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://172.17.48.1:8761/eureka/
+spring:
+  application:
+    name: javaexperts-spring-boot-api-gateway
+  cloud:
+    gateway:
+      routes:
+      - id: javaexperts-spring-boot-project
+        uri:
+          lb://javaexperts-spring-boot-project
+        predicates:
+        - Path=/register/** 
+      
